@@ -1,4 +1,4 @@
-from PIL import Image
+from PIL import Image, ImageFilter
 
 
 def gray_scale(image):
@@ -6,7 +6,7 @@ def gray_scale(image):
 
 
 def edge_detection(image):
-    pass
+    return image.filter(ImageFilter.FIND_EDGES)
 
 
 def remove_background(image):
@@ -23,9 +23,11 @@ def blur_image(image):
 
 def main():
     image_path = "input/test.JPG"
-    output_path = "output/test.JPG"
+    output_name = "edges.JPG"
+    output_path = f"output/{output_name}"
     image = Image.open(image_path)
-    output = gray_scale(image)
+    # output = gray_scale(image)  # Testing
+    output = edge_detection(image)  # Testing
     output.save(output_path)
 
 
