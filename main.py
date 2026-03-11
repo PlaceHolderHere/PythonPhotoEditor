@@ -13,8 +13,12 @@ def remove_background(image):
     pass
 
 
-def flip_image(image):
-    pass
+def vertical_flip(image):
+    return image.transpose(1)
+
+
+def horizontal_flip(image):
+    return image.transpose(0)
 
 
 def blur_image(image, intensity):  # Base Level is 2
@@ -23,12 +27,13 @@ def blur_image(image, intensity):  # Base Level is 2
 
 def main():
     image_path = "input/test.JPG"
-    output_name = "blur.JPG"
+    output_name = "flip2.JPG"
     output_path = f"output/{output_name}"
     image = Image.open(image_path)
     # output = gray_scale(image)  # Testing
     # output = edge_detection(image)  # Testing
-    output = blur_image(image, 5)  # Testing
+    # output = blur_image(image, 5)  # Testing
+    output = horizontal_flip(image)  # Testing
     output.save(output_path)
 
 
