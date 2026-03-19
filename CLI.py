@@ -1,9 +1,21 @@
 import image_functions
 from PIL import Image
+import os
 
 
 def main():
+    # Validating Input File Path
     input_file_path = input("Input File Path:")
+    valid_file_extensions = {ex for ex, f in Image.registered_extensions().items() if f in Image.OPEN}
+    if not os.path.exists(input_file_path):
+        print(f"Invalid Input File. File Path Does not Exist: {input_file_path}")
+        return -1
+
+    input_file, input_ext = os.path.splitext(input_file_path)
+    if input_ext.lower() not in valid_file_extensions:
+        print(f"Invalid Input File. File type {input_ext} is unsupported. Input File Path: {input_file_path}")
+        return -1
+
     output_directory_path = input("Output Directory Path:")
     output_file_name = input("Output Name (With File Extension):")
     print("Input the number of the effect you would like to apply:\n"
