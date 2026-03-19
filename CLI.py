@@ -26,7 +26,22 @@ def main():
         print(f"Invalid Output Path. Output Path is not a Directory. \nOutput Path Received: {output_directory_path}")
         return -1
 
-    output_file_name = input("Output Name (With File Extension):")
+    # File Name Error Handling
+    inputted_output_file_name = input("Output Name (With File Extension):")
+    output_name, output_ext = os.path.splitext(inputted_output_file_name)
+    # If the file name does not have a supported file type or any file type
+    # Replace it to be the same as the input's file type
+    if output_ext.lower() not in valid_file_extensions:
+        inputted_output_file_name = output_name + input_ext
+
+    output_file_path = output_directory_path + "\\" + inputted_output_file_name
+    if os.path.exists(output_file_path):
+        print(
+            f"Invalid Output Name. File Already Exists in Output Directory."
+            f"\n Output File Path: {output_directory_path}\\{output_name}{output_ext}"
+        )
+        return -1
+
     print("Input the number of the effect you would like to apply:\n"
           "1.Gray Scale\n"
           "2.Edge Detection\n"
@@ -51,9 +66,8 @@ def main():
         blur_intensity = int(input("Blur Intensity (1-100):"))
         output_image = image_functions.blur_image(input_image, blur_intensity)
 
-    output_file_path = f"{output_directory_path}/{output_file_name}"
     output_image.save(output_file_path)
-    print(f"Successfully saved {output_file_name} to {output_file_path}")
+    print(f"Successfully saved {inputted_output_file_name} to {output_file_path}")
 
 
 if __name__ == "__main__":
