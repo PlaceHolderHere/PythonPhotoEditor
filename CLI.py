@@ -16,7 +16,16 @@ def main():
         print(f"Invalid Input File. File type {input_ext} is unsupported. Input File Path: {input_file_path}")
         return -1
 
+    # Checking if the output directory exists
     output_directory_path = input("Output Directory Path:")
+    if not os.path.exists(output_directory_path):
+        print(f"Invalid Output Path. Output Path Does not Exist. \nOutput Path Received: {output_directory_path}")
+        return -1
+
+    if not os.path.isdir(output_directory_path):
+        print(f"Invalid Output Path. Output Path is not a Directory. \nOutput Path Received: {output_directory_path}")
+        return -1
+
     output_file_name = input("Output Name (With File Extension):")
     print("Input the number of the effect you would like to apply:\n"
           "1.Gray Scale\n"
