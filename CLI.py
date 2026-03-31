@@ -34,6 +34,7 @@ def main():
     if output_ext.lower() not in valid_file_extensions:
         inputted_output_file_name = output_name + input_ext
 
+    # Return an error if there already exists a matching output file
     output_file_path = output_directory_path + "\\" + inputted_output_file_name
     if os.path.exists(output_file_path):
         print(
@@ -42,6 +43,7 @@ def main():
         )
         return -1
 
+    # Image Effect Selection
     print("Input the number of the effect you would like to apply:\n"
           "1.Gray Scale\n"
           "2.Edge Detection\n"
