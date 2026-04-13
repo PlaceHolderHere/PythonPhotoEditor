@@ -20,3 +20,6 @@ def horizontal_flip(image):
 def blur_image(image, intensity):  # Base Level is 2
     return image.filter(ImageFilter.GaussianBlur(radius=intensity))
 
+
+def rotate_image(image, angle):
+    return image.rotate(angle, expand=True)
