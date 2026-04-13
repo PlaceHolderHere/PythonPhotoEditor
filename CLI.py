@@ -49,7 +49,8 @@ def main():
           "2.Edge Detection\n"
           "3.Vertical Flip\n"
           "4.Horizontal Flip\n"
-          "5.Gaussian Blur")
+          "5.Gaussian Blur\n"
+          "6.Rotate")
     function_type = int(input("Function type:"))
 
     # Image Processing
@@ -67,6 +68,9 @@ def main():
     elif function_type == 5:
         blur_intensity = int(input("Blur Intensity (1-100):"))
         output_image = image_functions.blur_image(input_image, blur_intensity)
+    elif function_type == 6:
+        angle = int(input("Angle (1-360):"))
+        output_image = image_functions.rotate_image(input_image, angle)
 
     output_image.save(output_file_path)
     print(f"Successfully saved {inputted_output_file_name} to {output_file_path}")
