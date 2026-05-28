@@ -1,11 +1,15 @@
 import image_functions
-import customtkinter
+import tkinter as tk
+
+# Constants
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 450
 
 # Initialization
-customtkinter.set_appearance_mode("System   ")
-customtkinter.set_default_color_theme("dark-blue")
-root = customtkinter.CTk()
-
+root = tk.Tk()
 root.title("Python Image Editor")
+root.geometry(f"{SCREEN_WIDTH}x{SCREEN_HEIGHT}")
+root.resizable(False, False)
 
+# Main Loop
 root.mainloop()
