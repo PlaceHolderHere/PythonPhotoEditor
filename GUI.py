@@ -8,6 +8,7 @@ PRIMARY_COLOR = "#C3D5EF"
 ACCENT_COLOR = "#26384D"
 SIDEBAR_WIDTH = 88
 NAVBAR_HEIGHT = 64
+PHOTO_PATH = ""
 
 # Initialization
 root = tk.Tk()
@@ -26,6 +27,11 @@ sidebar_frame.pack(side="left")
 # Content Area
 content_frame = tk.Frame(root)
 content_frame.pack(side="right", fill="both", expand=True)
+
+# Photo
+photo = tk.PhotoImage(file="assets/placeholder-photo.png")
+photo_label = tk.Label(content_frame, image=photo, width=SCREEN_WIDTH - 320, height=SCREEN_HEIGHT - 180)
+photo_label.pack(expand=True)
 
 # Main Loop
 root.mainloop()
