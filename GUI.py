@@ -8,30 +8,39 @@ PRIMARY_COLOR = "#C3D5EF"
 ACCENT_COLOR = "#26384D"
 SIDEBAR_WIDTH = 88
 NAVBAR_HEIGHT = 64
-PHOTO_PATH = ""
+PLACEHOLDER_PHOTO = "assets/placeholder-photo.png"
 
-# Initialization
-root = tk.Tk()
-root.title("Python Image Editor")
-root.geometry(f"{SCREEN_WIDTH}x{SCREEN_HEIGHT}")
-root.resizable(False, False)
+class PythonImageEditor:
+    def __init__(self):
+        # Variables
+        self.photo_path = PLACEHOLDER_PHOTO
 
-# NavBar
-navbar_frame = tk.Frame(root, bg=ACCENT_COLOR, width=SCREEN_WIDTH, height=NAVBAR_HEIGHT)
-navbar_frame.pack(side="top")
+        # Tkinter Initialization
+        self.root = tk.Tk()
+        self.root.title("Python Image Editor")
+        self.root.geometry(f"{SCREEN_WIDTH}x{SCREEN_HEIGHT}")
+        self.root.resizable(False, False)
 
-# SideBar
-sidebar_frame = tk.Frame(root, bg=PRIMARY_COLOR, width=SIDEBAR_WIDTH, height=SCREEN_HEIGHT)
-sidebar_frame.pack(side="left")
+        # NavBar
+        self.navbar_frame = tk.Frame(self.root, bg=ACCENT_COLOR, width=SCREEN_WIDTH, height=NAVBAR_HEIGHT)
+        self.navbar_frame.pack(side="top", padx=0, pady=0, fill="x")
 
-# Content Area
-content_frame = tk.Frame(root)
-content_frame.pack(side="right", fill="both", expand=True)
+        # SideBar
+        self.sidebar_frame = tk.Frame(self.root, bg=PRIMARY_COLOR, width=SIDEBAR_WIDTH, height=SCREEN_HEIGHT)
+        self.sidebar_frame.pack(side="left")
 
-# Photo
-photo = tk.PhotoImage(file="assets/placeholder-photo.png")
-photo_label = tk.Label(content_frame, image=photo, width=SCREEN_WIDTH - 320, height=SCREEN_HEIGHT - 180)
-photo_label.pack(expand=True)
+        # Content Area
+        self.content_frame = tk.Frame(self.root)
+        self.content_frame.pack(side="right", fill="both", expand=True)
 
-# Main Loop
-root.mainloop()
+        # Photo
+        self.photo = tk.PhotoImage(file=self.photo_path)
+        self.photo_label = tk.Label(self.content_frame, image=self.photo, width=SCREEN_WIDTH - 320, height=SCREEN_HEIGHT - 180)
+        self.photo_label.pack(expand=True)
+
+        # Main Loop
+        self.root.mainloop()
+
+
+if __name__ == "__main__":
+    PythonImageEditor()
